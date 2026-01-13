@@ -185,3 +185,5 @@ Create a `.env` file using `.env.example` and add required environment variables
 ---
 
 Built as part of **Sprint #1 – Full-Stack Development with Next.js & Cloud** 🚀
+
+
