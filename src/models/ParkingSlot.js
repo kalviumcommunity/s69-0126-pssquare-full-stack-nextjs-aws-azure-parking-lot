@@ -19,9 +19,18 @@ const ParkingSlotSchema = new mongoose.Schema(
       type: Date,
       default: null,
     },
+    exitTime: {
+      type: Date,
+      default: null,
+    },
+    fee: {
+      type: Number,
+      default: 0,
+    },
   },
   { timestamps: true }
 );
 
 export default mongoose.models.ParkingSlot ||
   mongoose.model("ParkingSlot", ParkingSlotSchema);
+  
