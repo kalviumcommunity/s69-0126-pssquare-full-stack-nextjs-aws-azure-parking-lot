@@ -48,7 +48,54 @@ export default async function DashboardPage() {
       </header>
 
       {/* ADMIN ONLY: Stats + Chart */}
-      
+      {isAdmin && (
+        <>
+          {/* Stats */}
+          <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div className="bg-white p-6 rounded-2xl shadow">
+              <h3 className="text-slate-500">Total Slots</h3>
+              <p className="text-3xl font-bold">{total}</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow">
+              <h3 className="text-slate-500">Occupied</h3>
+              <p className="text-3xl font-bold text-red-600">{occupied}</p>
+            </div>
+
+            <div className="bg-white p-6 rounded-2xl shadow">
+              <h3 className="text-slate-500">Free</h3>
+              <p className="text-3xl font-bold text-green-600">{free}</p>
+            </div>
+          </section>
+
+          {/* Chart */}
+          <section className="bg-white p-8 rounded-2xl shadow mb-12">
+            <h2 className="text-2xl font-semibold mb-6">
+              Parking Usage Overview
+            </h2>
+
+            <div className="mb-4">
+              <p className="text-sm mb-1">Occupied Slots ({occupied})</p>
+              <div className="w-full bg-slate-200 rounded-full h-6">
+                <div
+                  className="bg-red-500 h-6 rounded-full"
+                  style={{ width: `${occupiedPercent}%` }}
+                ></div>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-sm mb-1">Free Slots ({free})</p>
+              <div className="w-full bg-slate-200 rounded-full h-6">
+                <div
+                  className="bg-green-500 h-6 rounded-full"
+                  style={{ width: `${freePercent}%` }}
+                ></div>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
 
       {/* COMMON ACTIONS */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
