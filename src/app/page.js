@@ -1,14 +1,15 @@
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+    <main className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-yellow-100 text-gray-800">
+      
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-10 py-6">
+      <nav className="flex justify-between items-center px-10 py-6 bg-white shadow-md rounded-b-2xl">
         <h1 className="text-2xl font-bold tracking-wide">
           🚗 ParkSmart
         </h1>
         <a
           href="/login"
-          className="px-5 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 transition"
+          className="px-5 py-2 rounded-lg bg-yellow-400 hover:bg-yellow-500 transition text-gray-900 font-semibold shadow"
         >
           Login
         </a>
@@ -16,77 +17,88 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center mt-24 px-6">
-        <h2 className="text-5xl font-extrabold leading-tight max-w-4xl">
-          Smart Parking <span className="text-blue-400">Made Simple</span>
-        </h2>
+        <div className="bg-white rounded-3xl shadow-xl p-14 max-w-4xl">
 
-        <p className="mt-6 text-lg text-gray-300 max-w-2xl">
-          A full-stack parking management system that automates
-          slot allocation, tracks vehicle entry & exit, and calculates
-          parking fees accurately.
-        </p>
+          <h2 className="text-5xl font-extrabold leading-tight">
+            Smart Parking{" "}
+            <span className="text-yellow-500">Made Simple</span>
+          </h2>
 
-        <div className="mt-10 flex gap-4">
-          <a
-            href="/dashboard"
-            className="px-8 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 transition text-lg"
-          >
-            Go to Dashboard
-          </a>
-          <a
-            href="/login"
-            className="px-8 py-3 rounded-xl border border-gray-400 hover:bg-gray-700 transition text-lg"
-          >
-            Admin / Staff Login
-          </a>
+          <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
+            A full-stack parking management system that automates
+            slot allocation, tracks vehicle entry & exit, and calculates
+            parking fees accurately.
+          </p>
+
+          <div className="mt-10 flex justify-center gap-4 flex-wrap">
+            <a
+              href="/dashboard"
+              className="px-8 py-3 rounded-xl bg-yellow-400 hover:bg-yellow-500 transition text-lg text-gray-900 font-semibold shadow"
+            >
+              Go to Dashboard
+            </a>
+            <a
+              href="/login"
+              className="px-8 py-3 rounded-xl border border-yellow-400 hover:bg-yellow-100 transition text-lg text-gray-800 shadow"
+            >
+              Admin / Staff Login
+            </a>
+          </div>
+
         </div>
       </section>
 
-      {/* Features */}
+      {/* Features Section */}
       <section className="mt-32 px-10">
-        <h3 className="text-3xl font-bold text-center mb-14">
-          Why ParkSmart?
-        </h3>
+        <div className="bg-yellow-50 rounded-3xl p-12 shadow-lg">
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          <div className="bg-slate-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition">
-            <h4 className="text-xl font-semibold mb-3">
-              🚘 Auto Slot Allocation
-            </h4>
-            <p className="text-gray-300">
-              Automatically assigns free parking slots without any
-              manual intervention.
-            </p>
-          </div>
+          <h3 className="text-3xl font-bold text-center mb-14">
+            Why ParkSmart?
+          </h3>
 
-          <div className="bg-slate-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition">
-            <h4 className="text-xl font-semibold mb-3">
-              ⏱ Accurate Time & Billing
-            </h4>
-            <p className="text-gray-300">
-              Entry and exit times are recorded digitally and parking
-              fees are calculated precisely.
-            </p>
-          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            
+            <div className="bg-white p-8 rounded-2xl shadow-md hover:scale-105 transition">
+              <h4 className="text-xl font-semibold mb-3">
+                🚘 Auto Slot Allocation
+              </h4>
+              <p className="text-gray-600">
+                Automatically assigns free parking slots without any
+                manual intervention.
+              </p>
+            </div>
 
-          <div className="bg-slate-800 p-8 rounded-2xl shadow-lg hover:scale-105 transition">
-            <h4 className="text-xl font-semibold mb-3">
-              🔐 Secure Role-Based Access
-            </h4>
-            <p className="text-gray-300">
-              Admin and Staff have controlled access using secure
-              authentication.
-            </p>
+            <div className="bg-white p-8 rounded-2xl shadow-md hover:scale-105 transition">
+              <h4 className="text-xl font-semibold mb-3">
+                ⏱ Accurate Time & Billing
+              </h4>
+              <p className="text-gray-600">
+                Entry and exit times are recorded digitally and parking
+                fees are calculated precisely.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-md hover:scale-105 transition">
+              <h4 className="text-xl font-semibold mb-3">
+                🔐 Secure Role-Based Access
+              </h4>
+              <p className="text-gray-600">
+                Admin and Staff have controlled access using secure
+                authentication.
+              </p>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="mt-32 py-6 text-center text-gray-400 border-t border-gray-700">
+      <footer className="mt-32 py-6 text-center text-gray-500 border-t border-yellow-200">
         <p>
           ©️ 2026 ParkSmart | Built by Team PSsquare
         </p>
       </footer>
+
     </main>
   );
 }
