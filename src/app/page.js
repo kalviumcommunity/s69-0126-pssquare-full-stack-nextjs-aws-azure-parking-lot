@@ -5,7 +5,7 @@ export default function Home() {
       {/* Navbar */}
       <nav className="flex justify-between items-center px-10 py-6 bg-white shadow-md rounded-b-2xl">
         <h1 className="text-2xl font-bold tracking-wide">
-          🚗 ParkSmart
+          ParkSmart
         </h1>
         <a
           href="/login"
