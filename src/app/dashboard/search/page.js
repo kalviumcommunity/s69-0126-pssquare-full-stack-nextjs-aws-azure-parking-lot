@@ -1,85 +1,56 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-export default function SearchVehiclePage() {
+export default function EntryPage() {
   const [vehicleNumber, setVehicleNumber] = useState("");
-  const [slots, setSlots] = useState([]);
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
 
-  useEffect(() => {
-    fetch("/api/slots")
-      .then((res) => res.json())
-      .then((data) => setSlots(data));
-  }, []);
+  const handleEntry = async () => {
+    const res = await fetch("/api/parking/entry", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ vehicleNumber }),
+    });
 
-  const handleSearch = () => {
-    setError("");
-    setResult(null);
-
-    if (!vehicleNumber) {
-      setError("Please enter a vehicle number");
-      return;
-    }
-
-    const found = slots.find(
-      (slot) =>
-        slot.isOccupied &&
-        slot.vehicleNumber?.toLowerCase() === vehicleNumber.toLowerCase()
-    );
-
-    if (!found) {
-      setError("Vehicle is not currently parked");
-      return;
-    }
-
-    setResult(found);
+    const text = await res.text();
+    setMessage(text);
   };
 
   return (
-    <main className="min-h-screen bg-slate-100 p-10">
-      <h1 className="text-3xl font-bold mb-6">🔍 Search Vehicle</h1>
+    <main className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-yellow-100 flex items-center justify-center px-6">
+      
+      {/* Entry Card */}
+      <div className="bg-white rounded-3xl shadow-xl p-10 w-full max-w-md text-center">
+        
+        <h2 className="text-3xl font-bold text-gray-800 mb-8">
+          🚗 Vehicle Entry
+        </h2>
 
-      <div className="mb-6">
+        {/* Input */}
         <input
-          className="border p-2 rounded w-72"
           placeholder="Enter Vehicle Number"
           value={vehicleNumber}
           onChange={(e) => setVehicleNumber(e.target.value)}
+          className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-yellow-400 mb-6"
         />
+
+        {/* Button */}
         <button
-          onClick={handleSearch}
-          className="ml-4 bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700"
+          onClick={handleEntry}
+          className="w-full py-3 rounded-xl bg-yellow-400 hover:bg-yellow-500 transition text-gray-900 font-semibold shadow-lg"
         >
-          Search
+          Enter Vehicle
         </button>
+
+        {/* Message */}
+        {message && (
+          <p className="mt-6 text-gray-700 font-medium bg-yellow-50 border border-yellow-200 rounded-xl py-3 px-4">
+            {message}
+          </p>
+        )}
+
       </div>
-
-      {/* Error */}
-      {error && (
-        <div className="p-4 bg-red-100 text-red-700 rounded w-fit">
-          ❌ {error}
-        </div>
-      )}
-
-      {/* Result */}
-      {result && (
-        <div className="mt-6 p-6 bg-green-100 rounded shadow w-fit">
-          <h2 className="text-xl font-semibold mb-2">
-            ✅ Vehicle Found
-          </h2>
-          <p><strong>Vehicle Number:</strong> {result.vehicleNumber}</p>
-          <p><strong>Slot Number:</strong> {result.slotNumber}</p>
-          <p>
-            <strong>Entry Time:</strong>{" "}
-            {new Date(result.entryTime).toLocaleString()}
-          </p>
-          <p className="mt-2 font-semibold text-green-700">
-            Status: Parked
-          </p>
-        </div>
-      )}
     </main>
   );
 }
